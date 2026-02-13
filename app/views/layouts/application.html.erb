@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Myblog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track":"reload" %>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <%= link_to "ホーム", root_path %>|
+        <%= link_to "About", pages_about_path %>|
+        <%= link_to "Contact", pages_contact_path %>
+      </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 My Blog</p>
+    </footer>
+  </body>
+</html>
