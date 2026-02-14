@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Myblog</title>
+    <title>MyBlog</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,9 +12,10 @@
   <body>
     <header>
       <nav>
-        <%= link_to "ホーム", root_path %>|
-        <%= link_to "About", pages_about_path %>|
-        <%= link_to "Contact", pages_contact_path %>
+        <%= link_to "ホーム", root_path, class: current_page?(root_path)? 'active': "" %>|
+        <%= link_to "About", about_path, class:current_page?(about_path)? 'active': "" %>|
+        <%= link_to "Contact", contact_path, class:current_page?(contact_path)? 'active': "" %>|
+        <%= link_to "Privacy", privacy_path, class: current_page?(privacy_path)? 'active': "" %>
       </nav>
     </header>
 

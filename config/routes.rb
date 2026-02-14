@@ -1,6 +1,7 @@
 
 Rails.application.routes.draw do
   root 'welcome#index'
-  get 'pages/about'
-  get 'pages/contact'
+  get 'about', to: 'pages#about'
+  get 'contact', to: 'pages#contact'
+  get 'privacy', to: 'pages#privacy'
 end
