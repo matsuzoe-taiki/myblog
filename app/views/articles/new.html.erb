@@ -1,0 +1,29 @@
+<h1>新しい記事</h1>
+
+<%= form_with model: @article do |form| %> <%#モデルを指定するのはRailsでは新規作成ならPOST、編集ならPATCHをじどうで判断してくれる%>
+  <% if @article.errors.any? %>
+    <div class="error">
+        <p><%= @article.errors.count %>件のエラーがあります：</p>
+        <ul>
+            <% @article.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, "タイトル" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :content, "本文" %>
+    <%= form.text_area :content, rows: 10 %>
+  </div>
+
+  <div>
+    <%= form.submit "投稿する" %>
+    <%= link_to "キャンセル", article_path %>
+  </div>
+<% end %>
