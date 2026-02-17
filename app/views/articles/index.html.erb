@@ -1,16 +1,39 @@
-<h1>記事一覧</h1>
+<div class="row">
+  <div class="col-md-8">
+    <h1 class="mb-4">記事一覧</h1>
 
-<%= link_to "新しい記事を書く", new_article_path %>
-
-<% if @articles.any? %>
-  <% @articles.each do |article| %>
-    <article>
-        <h2><%= link_to article.title, article_path(article) %></h2>
-        <p><%= truncate(article.content, length: 100) %></p>
-        <small>投稿日：<%= article.created_at.strftime("%Y年 %m月 %d日") %></small>
-    </article>
-    <hr>
-  <% end %>
-<% else %>
-  <p>まだ記事はありません</p>
-<% end %>
+    <% if @articles.any? %>
+      <% @articles.each do |article| %>
+        <div class="card mb-4">
+          <div class="card-body">
+            <h2 class="card-title h4">
+              <%= link_to article.title, article_path(article), class: "text-decoration-none" %>
+            </h2>
+            <p class="card-text text-muted">
+              <%= truncate(article.content, length: 150) %>
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+              <%= link_to "続きを読む", article_path(article), class: "btn btn-primary btn-sm" %>
+              <small class="text-muted">
+                <%= article.created_at.strftime("%Y年 %m月 %d日") %>
+              </small>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="alert alert-info">
+        まだ記事がありません。
+        <%= link_to "最初の記事を書く", new_article_path %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">サイドバー</h5>
+        <p class="card-text">ここに人気記事やカテゴリーを表示予定</p>
+      </div>
+    </div>
+  </div>
+</div>
